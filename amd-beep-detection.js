@@ -159,7 +159,7 @@ app.post('/event1', (req, res) => {
 
 //-----------        
 
-//-- This is a placeholder action to handle a possible incoming calls - in case someome calls back
+//-- This is a placeholder action to handle possible incoming calls - in case someome calls back
 //-- the Vonage number used as caller number on outbound calls.
 
 //-- This is not really related to the AMD/Beep detection handling with outbound calls
