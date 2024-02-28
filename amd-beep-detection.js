@@ -16,7 +16,7 @@ const Vonage = require('@vonage/server-sdk');
 
 const options = {
   debug: true,
-  apiHost: "api-us-3.vonage.com"  // make sure this matches what is set for the application in the dashboard (dashboard.nexmo.com)
+  apiHost: "api-us-4.vonage.com"  // make sure this matches what is set for the application in the dashboard (dashboard.nexmo.com)
 };
 
 const vonage = new Vonage({

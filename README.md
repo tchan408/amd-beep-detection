@@ -25,6 +25,6 @@ After the Answer webhook (called number has answered the call), the application 
 
 In this sample reference code, each returned NCCO contains "talk" action as illustration, your application can return any other valid actions in the returned NCCO.
 
-Although this sample code has been written for using the Vonage Voice API Node.js SDK, the same call flows and returned NCCO contents would be the same with any other Vonage Voice API SDK programming language, including using direct API calls.
+Although this sample code has been written using the Vonage Voice API Node.js SDK, the same call flows and returned NCCO contents would be the same with any other Vonage Voice API SDK programming language, including using direct API calls.
 
 
