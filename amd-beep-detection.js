@@ -16,7 +16,12 @@ const Vonage = require('@vonage/server-sdk');
 
 const options = {
   debug: true,
-  apiHost: "api-us-4.vonage.com"  // make sure this matches what is set for the application in the dashboard (dashboard.nexmo.com)
+  // apiHost: "api-ap-3.vonage.com"  // make sure this matches what is set for the application in the dashboard (dashboard.nexmo.com)
+  // apiHost: "api-ap-4.vonage.com"  // make sure this matches what is set for the application in the dashboard (dashboard.nexmo.com)
+  // apiHost: "api-eu-3.vonage.com"  // make sure this matches what is set for the application in the dashboard (dashboard.nexmo.com)
+  // apiHost: "api-eu-4.vonage.com"  // make sure this matches what is set for the application in the dashboard (dashboard.nexmo.com)
+  apiHost: "api-us-3.vonage.com"  // make sure this matches what is set for the application in the dashboard (dashboard.nexmo.com)
+  // apiHost: "api-us-4.vonage.com"  // make sure this matches what is set for the application in the dashboard (dashboard.nexmo.com)
 };
 
 const vonage = new Vonage({
@@ -36,6 +41,10 @@ app.use(bodyParser.json());
 // to simulate placing an outbound call, open a web browser and enter
 // https://<server>/call?number=<phone_number>
 
+console.log('https://<server>/call?number=<phone_number>');
+
+//---
+
 app.get('/call', (req, res) => {
 
   const hostName = `${req.hostname}`;
@@ -54,7 +63,8 @@ app.get('/call', (req, res) => {
       },
     advanced_machine_detection: {
       "behavior": "continue",
-      "mode": "default",  // use this value for the latest AMD implementation
+      // "mode": "default",  // use this value for the latest AMD implementation
+      "mode": "detect_beep",
       "beep_timeout": 45
     },
     ringing_timer: 70,
@@ -82,7 +92,7 @@ app.get('/answer1', (req, res) => {
     const nccoResponse = [
         {
           "action": "talk",
-          "text": "Hello, this is a call from your preferred provider. This is a friendly reminder for your appointment tomorrow at 3 pm. Please do not forget to bring your ID and arrive 15 minutes before your appointment.",
+          "text": "Hello, this is a test call for beep detection. This is a test message from your preferred provider. This is a friendly reminder for your appointment tomorrow at 3 pm. Please do not forget to bring your ID and arrive 15 minutes before your appointment.",
           "language": "en-US",
           "style": 0
         }
@@ -96,7 +106,7 @@ app.get('/answer1', (req, res) => {
 
 app.post('/event1', (req, res) => {
 
-  let nccoResponse = [{}];
+  let nccoResponse = null;
 
   //-- You may uncomment this section
   // //-- AMD returns status machine 
@@ -152,8 +162,12 @@ app.post('/event1', (req, res) => {
   //     }
   //   ];
   // };
-  
-  res.status(200).json(nccoResponse);
+
+  if (nccoResponse) {
+    res.status(200).json(nccoResponse);
+  } else {
+    res.status(200).send('Ok');
+  }  
 
 });
 
