@@ -63,8 +63,8 @@ app.get('/call', (req, res) => {
       },
     advanced_machine_detection: {
       "behavior": "continue",
-      // "mode": "default",  // use this value for the latest AMD implementation
-      "mode": "detect_beep",
+      "mode": "default",  // use this value for the latest AMD implementation
+      // "mode": "detect_beep",
       "beep_timeout": 45
     },
     ringing_timer: 70,
@@ -107,6 +107,20 @@ app.get('/answer1', (req, res) => {
 app.post('/event1', (req, res) => {
 
   let nccoResponse = null;
+
+  //-- You may uncomment this section
+  // //-- AMD returns status machine 
+  // if (req.body.status == "machine") {
+  //   console.log('>>> /event1 status: "machine"');
+  //   nccoResponse = [
+  //     {
+  //       "action": "talk",
+  //       "text": "Status machine has been detected. Generally, in real deployment, no new message would be played on this event.",
+  //       "language": "en-US",
+  //       "style": 0
+  //     }
+  //   ];
+  // };
 
   //-- You may uncomment this section
   // //-- AMD returns status machine 
