@@ -156,7 +156,7 @@ app.post('/event1', (req, res) => {
     nccoResponse = [
       {
         "action": "talk",
-        "text": "This is the voice message for the recipient",
+        "text": "Beep has been detected. This is the voice message for the recipient",
         "language": "en-US",
         "style": 0
       }
